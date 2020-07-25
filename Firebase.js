@@ -17,7 +17,7 @@ var firstName = document.querySelector('.first_name');
 var secondName = document.querySelector('.second_name');
 var thirdName = document.querySelector('.third_name');
 var company = document.querySelector('.company');
-var position = document.querySelector('.postion');
+var position = document.querySelector('.position');
 var date = document.querySelector('.date');
 var month = document.querySelector('.month');
 var year = document.querySelector('.year');
@@ -42,12 +42,6 @@ function createNewItem(firstName, secondName, thirdName, company, position, date
     })
 }
 
-document.addEventListener('click', function(){
+document.querySelector('.button').addEventListener('click', function(){
   createNewItem(firstName.value, secondName.value, thirdName.value, company.value, position.value, date.value, month.value, year.value);
 })
-
-function readAlldata(){
-  return db.collection("Users").get();
-}
-
-readAlldata();
