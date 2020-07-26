@@ -47,13 +47,5 @@ document.querySelector('.inner__form').addEventListener('submit', function(event
   this.reset();
 })
 
-function readAllData() {
-  return db.collection("Users").get()
-}
 
-readAllData()
-.then((users) => {
-  users.forEach((doc) => { 
-    console.log(doc.data()) })
-})
   
