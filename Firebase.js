@@ -22,6 +22,7 @@ var date = document.querySelector('.date');
 var month = document.querySelector('.month');
 var year = document.querySelector('.year');
 
+
 function createNewItem(firstName, secondName, thirdName, company, position, date, month, year) {
   db.collection('Users').add(
     {
@@ -30,9 +31,7 @@ function createNewItem(firstName, secondName, thirdName, company, position, date
       thirdName: thirdName,
       company: company,
       position: position,
-      date: date,
-      month: month,
-      year: year
+      birthDate: new Date(+year, +month, +date).getTime()
     })
     .then(function(docRef) {
       console.log('Document written with ID: ', docRef.id)
@@ -42,6 +41,19 @@ function createNewItem(firstName, secondName, thirdName, company, position, date
     })
 }
 
-document.querySelector('.button').addEventListener('click', function(){
+document.querySelector('.inner__form').addEventListener('submit', function(event) {
+  event.preventDefault();
   createNewItem(firstName.value, secondName.value, thirdName.value, company.value, position.value, date.value, month.value, year.value);
+  this.reset();
 })
+
+function readAllData() {
+  return db.collection("Users").get()
+}
+
+readAllData()
+.then((users) => {
+  users.forEach((doc) => { 
+    console.log(doc.data()) })
+})
+  
