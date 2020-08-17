@@ -12,7 +12,7 @@ function readAllData() {
     users.forEach((doc) => { 
       if (new Date(doc.data().birthDate).getDate() === now.getDate() && new Date(doc.data().birthDate).getMonth() === now.getMonth()) {
           let p = document.createElement('p');
-          p.textContent = `Сегодня день рождение у ${doc.data().firstName} ${doc.data().thirdName} ${doc.data().secondName}`
+          p.textContent = `Сегодня день рождения у ${doc.data().firstName} ${doc.data().thirdName} ${doc.data().secondName}, ${doc.data().position}, ${doc.data().company}`
           birthdaysSection.appendChild(p);
           isBirtdayToday = true;
       } 
